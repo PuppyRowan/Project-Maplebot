@@ -1,0 +1,26 @@
+{
+    "0": {
+        "bark_chance": 0.01,
+        "uwu_chance": 0.02,
+        "puppy_time_chance": 0.05,
+        "gag_active": false,
+        "features_disabled": true,
+        "current_mood": "happy"
+    },
+    "947925127654412370": {
+        "bark_chance": 0.01,
+        "uwu_chance": 0.02,
+        "puppy_time_chance": 0.05,
+        "gag_active": false,
+        "features_disabled": true,
+        "current_mood": "happy"
+    },
+    "1330786708282933278": {
+        "bark_chance": 0.01,
+        "uwu_chance": 0.02,
+        "puppy_time_chance": 0.05,
+        "gag_active": false,
+        "features_disabled": true,
+        "current_mood": "happy"
+    }
+}

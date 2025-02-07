@@ -1,0 +1,17 @@
+[Unit]
+Description=Maplebot Discord Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/maplebot
+Environment=PYTHONPATH=/root/maplebot
+Environment=PATH=/usr/local/bin:/usr/bin:/bin:/root/maplebot/venv/bin
+ExecStart=/root/maplebot/venv/bin/python run_bot.py
+EnvironmentFile=/root/maplebot/.env
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

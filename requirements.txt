@@ -1,0 +1,5 @@
+nltk==3.8.1
+aiohttp==3.9.3
+backoff==2.2.1
+discord.py==2.3.2
+typing-extensions==4.9.0

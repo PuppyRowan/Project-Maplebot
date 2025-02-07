@@ -1,0 +1,18 @@
+{
+    "1330786708282933278": {
+        "bark_chance": 0.01,
+        "uwu_chance": 0.02,
+        "puppy_time_chance": 0.05,
+        "gag_active": false,
+        "features_disabled": false,
+        "current_mood": "happy"
+    },
+    "1279971000401924178": {
+        "bark_chance": 0.01,
+        "uwu_chance": 0.02,
+        "puppy_time_chance": 0.05,
+        "gag_active": false,
+        "features_disabled": true,
+        "current_mood": "happy"
+    }
+}

@@ -1,0 +1,339 @@
+2025-02-04 18:22:59,093 - discord.client - INFO - logging in using static token
+2025-02-04 18:22:59,783 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-04 18:22:59,785 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-04 18:22:59,913 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-04 18:23:00,263 - bot.commands - INFO - Synced commands globally
+2025-02-04 18:23:01,873 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 061bef351bc61d1ac7722987b1cda5b1).
+2025-02-04 18:23:05,736 - bot.connection - INFO - Web server shutdown complete
+2025-02-05 13:46:34,008 - discord.client - INFO - logging in using static token
+2025-02-05 13:46:36,379 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-05 13:46:36,391 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-05 13:46:36,614 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-05 13:46:36,926 - bot.commands - INFO - Synced commands globally
+2025-02-05 13:46:37,515 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4e9193349395223d07467a917b7d31da).
+2025-02-05 13:53:26,166 - bot.connection - INFO - Web server shutdown complete
+2025-02-05 13:53:29,132 - discord.client - INFO - logging in using static token
+2025-02-05 13:53:29,755 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-05 13:53:29,756 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-05 13:53:29,913 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-05 13:53:30,194 - bot.commands - INFO - Synced commands globally
+2025-02-05 13:53:30,630 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 50e513f591ffefaf22d63227251c9460).
+2025-02-05 14:00:17,146 - bot.connection - INFO - Web server shutdown complete
+2025-02-05 14:00:19,834 - discord.client - INFO - logging in using static token
+2025-02-05 14:00:20,448 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-05 14:00:20,449 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-05 14:00:20,589 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-05 14:00:20,932 - bot.commands - INFO - Synced commands globally
+2025-02-05 14:00:21,491 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 7a560e2a3ad1a91028fa3bf6b4a2be4d).
+2025-02-05 14:00:39,664 - discord.client - ERROR - Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "g:\Shared\Project Maplebot\bot\main.py", line 1023, in wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\Shared\Project Maplebot\bot\main.py", line 1169, in on_message
+    word = pronoun_replacer.replace(word)
+  File "g:\Shared\Project Maplebot\bot\wordbanks.py", line 441, in replace
+    text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+  File "C:\Program Files\Python313\Lib\re\__init__.py", line 208, in sub
+    return _compile(pattern, flags).sub(repl, string, count)
+           ~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\re\__init__.py", line 345, in _compile
+    raise ValueError(
+        "cannot process flags argument with a compiled pattern")
+ValueError: cannot process flags argument with a compiled pattern
+2025-02-05 14:01:07,565 - bot.connection - INFO - Web server shutdown complete
+2025-02-05 14:05:07,522 - discord.client - INFO - logging in using static token
+2025-02-05 14:05:08,136 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-05 14:05:08,137 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-05 14:05:08,300 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-05 14:05:08,521 - bot.commands - INFO - Synced commands globally
+2025-02-05 14:05:08,964 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: aea223f57df891ec0f4b53737671fd18).
+2025-02-05 14:16:38,426 - bot.connection - INFO - Web server shutdown complete
+2025-02-05 14:16:41,957 - discord.client - INFO - logging in using static token
+2025-02-05 14:16:42,515 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-05 14:16:42,516 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-05 14:16:42,713 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-05 14:16:43,038 - bot.commands - INFO - Synced commands globally
+2025-02-05 14:16:43,592 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: f9789271a3d1802ff371a816f1aebd86).
+2025-02-05 14:25:17,897 - bot.connection - INFO - Web server shutdown complete
+2025-02-05 14:25:20,644 - discord.client - INFO - logging in using static token
+2025-02-05 14:25:22,101 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-05 14:25:22,103 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-05 14:25:22,265 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-05 14:25:22,505 - bot.commands - INFO - Synced commands globally
+2025-02-05 14:25:22,983 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 95dcb6d21c2e18b9e2229f95523d370a).
+2025-02-05 14:31:12,733 - discord.client - ERROR - Attempting a reconnect in 0.97s
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1351, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 995, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1026, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\resolver.py", line 36, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 934, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        None, getaddr_func, host, port, family, type, proto, flags)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Program Files\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\client.py", line 1004, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\client.py", line 703, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 548, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1056, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1357, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-d.discord.gg:443 ssl:default [getaddrinfo failed]
+2025-02-05 14:31:13,828 - discord.client - ERROR - Attempting a reconnect in 2.39s
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1351, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 995, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1026, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\resolver.py", line 36, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 934, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        None, getaddr_func, host, port, family, type, proto, flags)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Program Files\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\client.py", line 1004, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\client.py", line 703, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 548, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1056, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1357, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-d.discord.gg:443 ssl:default [getaddrinfo failed]
+2025-02-05 14:31:16,236 - discord.client - ERROR - Attempting a reconnect in 5.48s
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1351, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 995, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1026, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\resolver.py", line 36, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 934, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        None, getaddr_func, host, port, family, type, proto, flags)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Program Files\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\client.py", line 1004, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\client.py", line 703, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 548, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1056, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1357, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-d.discord.gg:443 ssl:default [getaddrinfo failed]
+2025-02-05 14:31:21,726 - discord.client - ERROR - Attempting a reconnect in 8.56s
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1351, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 995, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1026, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\resolver.py", line 36, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Program Files\Python313\Lib\asyncio\base_events.py", line 934, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        None, getaddr_func, host, port, family, type, proto, flags)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\Program Files\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\client.py", line 1004, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\client.py", line 703, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 548, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1056, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\aiohttp\connector.py", line 1357, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gateway-us-east1-d.discord.gg:443 ssl:default [getaddrinfo failed]
+2025-02-05 14:31:30,639 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 95dcb6d21c2e18b9e2229f95523d370a.
+2025-02-05 14:46:32,814 - bot.connection - INFO - Web server shutdown complete
+2025-02-05 14:46:35,862 - discord.client - INFO - logging in using static token
+2025-02-05 14:46:37,818 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-05 14:46:37,819 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-05 14:46:37,956 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-05 14:46:38,344 - bot.commands - INFO - Synced commands globally
+2025-02-05 14:46:38,812 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 8ec143ac9c50cd323d16074969d1670b).
+2025-02-05 14:47:19,956 - bot.connection - INFO - Web server shutdown complete
