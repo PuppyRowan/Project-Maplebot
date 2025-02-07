@@ -1,0 +1,12 @@
+{
+    "348490841339330561": {
+        "user_id": 348490841339330561,
+        "current_mood": "anxious",
+        "bark_chance": 0.01,
+        "uwu_chance": 0.02,
+        "puppy_time_chance": 0.05,
+        "gag_active": false,
+        "features_disabled": false,
+        "is_puppy": true
+    }
+}

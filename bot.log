@@ -337,3 +337,364 @@ aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host gatewa
 2025-02-05 14:46:38,344 - bot.commands - INFO - Synced commands globally
 2025-02-05 14:46:38,812 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 8ec143ac9c50cd323d16074969d1670b).
 2025-02-05 14:47:19,956 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 00:18:31,138 - discord.client - INFO - logging in using static token
+2025-02-07 00:18:31,844 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 00:18:31,845 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 00:18:31,977 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 00:18:32,210 - bot.commands - INFO - Synced commands globally
+2025-02-07 00:18:33,133 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 003aba029b22675105880497916f93d5).
+2025-02-07 00:18:35,643 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:19:07,613 - discord.ext.commands.bot - ERROR - Ignoring exception in command analyze
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 537, in _parse_arguments
+    return await super()._parse_arguments(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 853, in _parse_arguments
+    kwargs[name] = await self.transform(ctx, param, attachments)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 697, in transform
+    raise MissingRequiredArgument(param)
+discord.ext.commands.errors.MissingRequiredArgument: text is a required argument that is missing.
+2025-02-07 00:19:07,949 - discord.ext.commands.bot - ERROR - Ignoring exception in command analyze
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 537, in _parse_arguments
+    return await super()._parse_arguments(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 853, in _parse_arguments
+    kwargs[name] = await self.transform(ctx, param, attachments)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 697, in transform
+    raise MissingRequiredArgument(param)
+discord.ext.commands.errors.MissingRequiredArgument: text is a required argument that is missing.
+2025-02-07 00:19:56,177 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:21:39,418 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 00:21:43,939 - discord.client - INFO - logging in using static token
+2025-02-07 00:21:44,606 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 00:21:44,608 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 00:21:44,745 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 00:21:44,976 - bot.commands - INFO - Synced commands globally
+2025-02-07 00:21:45,909 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 8009a7fae831d92e4fd4e29161c2043b).
+2025-02-07 00:21:48,568 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:23:10,047 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:26:32,464 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:31:40,550 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:34:33,101 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 00:34:37,658 - discord.client - INFO - logging in using static token
+2025-02-07 00:34:38,495 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 00:34:38,495 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 00:34:38,621 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 00:34:38,968 - bot.commands - INFO - Synced commands globally
+2025-02-07 00:34:39,343 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ab61a71e61e6712b3216f3cff5c17e3a).
+2025-02-07 00:34:41,550 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:36:09,425 - discord.ext.commands.bot - ERROR - Ignoring exception in command analyze
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 537, in _parse_arguments
+    return await super()._parse_arguments(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 853, in _parse_arguments
+    kwargs[name] = await self.transform(ctx, param, attachments)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 697, in transform
+    raise MissingRequiredArgument(param)
+discord.ext.commands.errors.MissingRequiredArgument: text is a required argument that is missing.
+2025-02-07 00:36:09,927 - discord.ext.commands.bot - ERROR - Ignoring exception in command analyze
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 537, in _parse_arguments
+    return await super()._parse_arguments(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 853, in _parse_arguments
+    kwargs[name] = await self.transform(ctx, param, attachments)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 697, in transform
+    raise MissingRequiredArgument(param)
+discord.ext.commands.errors.MissingRequiredArgument: text is a required argument that is missing.
+2025-02-07 00:36:11,101 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:37:25,337 - discord.ext.commands.bot - ERROR - Ignoring exception in command mood
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\Shared\Project Maplebot\bot\main.py", line 823, in wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\Shared\Project Maplebot\bot\main.py", line 1386, in mood
+    settings = bot.guild_settings.get_settings(interaction.guild_id)
+                                               ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Context' object has no attribute 'guild_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: AttributeError: 'Context' object has no attribute 'guild_id'
+2025-02-07 00:37:25,950 - discord.ext.commands.bot - ERROR - Ignoring exception in command mood
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\Shared\Project Maplebot\bot\main.py", line 823, in wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\Shared\Project Maplebot\bot\main.py", line 1386, in mood
+    settings = bot.guild_settings.get_settings(interaction.guild_id)
+                                               ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Context' object has no attribute 'guild_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: AttributeError: 'Context' object has no attribute 'guild_id'
+2025-02-07 00:37:32,893 - discord.ext.commands.bot - ERROR - Ignoring exception in command mood
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\app_commands\commands.py", line 858, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\Shared\Project Maplebot\bot\main.py", line 823, in wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "g:\Shared\Project Maplebot\bot\main.py", line 1386, in mood
+    settings = bot.guild_settings.get_settings(interaction.guild_id)
+                                               ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Context' object has no attribute 'guild_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 444, in _invoke_with_namespace
+    value = await self._do_call(ctx, ctx.kwargs)  # type: ignore
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\app_commands\commands.py", line 876, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'mood' raised an exception: AttributeError: 'Context' object has no attribute 'guild_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 444, in _invoke_with_namespace
+    value = await self._do_call(ctx, ctx.kwargs)  # type: ignore
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\app_commands\commands.py", line 876, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.ext.commands.errors.HybridCommandError: Hybrid command raised an error: Command 'mood' raised an exception: AttributeError: 'Context' object has no attribute 'guild_id'
+2025-02-07 00:39:33,052 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:41:40,013 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 00:41:44,345 - discord.client - INFO - logging in using static token
+2025-02-07 00:41:44,885 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 00:41:44,886 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 00:41:45,070 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 00:41:45,277 - bot.commands - INFO - Synced commands globally
+2025-02-07 00:41:45,755 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 10972c035b629816b99a7fa7ad3233ca).
+2025-02-07 00:41:47,940 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:41:51,151 - discord.ext.commands.bot - ERROR - Ignoring exception in command analyze
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 537, in _parse_arguments
+    return await super()._parse_arguments(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 853, in _parse_arguments
+    kwargs[name] = await self.transform(ctx, param, attachments)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 697, in transform
+    raise MissingRequiredArgument(param)
+discord.ext.commands.errors.MissingRequiredArgument: text is a required argument that is missing.
+2025-02-07 00:41:51,683 - discord.ext.commands.bot - ERROR - Ignoring exception in command analyze
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 537, in _parse_arguments
+    return await super()._parse_arguments(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 853, in _parse_arguments
+    kwargs[name] = await self.transform(ctx, param, attachments)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 697, in transform
+    raise MissingRequiredArgument(param)
+discord.ext.commands.errors.MissingRequiredArgument: text is a required argument that is missing.
+2025-02-07 00:43:17,677 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:47:06,887 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:49:09,799 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 00:52:18,186 - discord.client - INFO - logging in using static token
+2025-02-07 00:52:18,951 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 00:52:18,952 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 00:52:19,075 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 00:52:19,459 - bot.commands - INFO - Synced commands globally
+2025-02-07 00:52:19,957 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 23794702b8197c8b80ba9c04117a1e5a).
+2025-02-07 00:52:22,228 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:54:11,979 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 00:57:15,323 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:00:36,780 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:00:39,735 - discord.client - INFO - logging in using static token
+2025-02-07 01:00:40,883 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:00:40,884 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:00:41,013 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:00:41,387 - bot.commands - INFO - Synced commands globally
+2025-02-07 01:00:41,854 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: c18a3494c3d0a10fe5da222efbf7b8bf).
+2025-02-07 01:00:44,128 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:02:11,917 - discord.ext.commands.bot - ERROR - Ignoring exception in command setpuppy
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 537, in _parse_arguments
+    return await super()._parse_arguments(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 845, in _parse_arguments
+    transformed = await self.transform(ctx, param, attachments)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 697, in transform
+    raise MissingRequiredArgument(param)
+discord.ext.commands.errors.MissingRequiredArgument: setting is a required argument that is missing.
+2025-02-07 01:02:11,920 - discord.ext.commands.bot - ERROR - Ignoring exception in command setpuppy
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 1021, in invoke
+    await self.prepare(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 938, in prepare
+    await self._parse_arguments(ctx)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\hybrid.py", line 537, in _parse_arguments
+    return await super()._parse_arguments(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 845, in _parse_arguments
+    transformed = await self.transform(ctx, param, attachments)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\ext\commands\core.py", line 697, in transform
+    raise MissingRequiredArgument(param)
+discord.ext.commands.errors.MissingRequiredArgument: setting is a required argument that is missing.
+2025-02-07 01:02:40,892 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:03:00,455 - discord.ext.commands.bot - ERROR - Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "listpuppy" is not found
+2025-02-07 01:03:00,456 - discord.ext.commands.bot - ERROR - Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "listpuppy" is not found
+2025-02-07 01:04:53,805 - discord.ext.commands.bot - ERROR - Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "listpuppy" is not found
+2025-02-07 01:04:53,806 - discord.ext.commands.bot - ERROR - Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "listpuppy" is not found
+2025-02-07 01:06:29,471 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:09:44,116 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:09:47,472 - discord.client - INFO - logging in using static token
+2025-02-07 01:09:48,112 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:09:48,113 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:09:48,262 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:09:48,487 - bot.commands - INFO - Synced commands globally
+2025-02-07 01:09:49,069 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 6fdbda3ed10992e00db796e331fae884).
+2025-02-07 01:09:51,255 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:11:45,238 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:14:15,361 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:14:18,842 - discord.client - INFO - logging in using static token
+2025-02-07 01:14:19,491 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:14:19,492 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:14:19,632 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:14:19,850 - bot.commands - INFO - Synced commands globally
+2025-02-07 01:14:20,234 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 66d1303554def20bb9cf37f396a61631).
+2025-02-07 01:14:22,425 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:15:49,871 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:15:52,815 - discord.client - INFO - logging in using static token
+2025-02-07 01:15:53,332 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:15:53,333 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:15:53,510 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:15:53,752 - bot.commands - INFO - Synced commands globally
+2025-02-07 01:15:54,187 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: b8c1f74567785af1641e34e2315b4caa).
+2025-02-07 01:15:56,725 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:16:28,866 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:16:34,706 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:16:37,543 - discord.client - INFO - logging in using static token
+2025-02-07 01:16:38,077 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:16:38,078 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:16:57,486 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:17:00,410 - discord.client - INFO - logging in using static token
+2025-02-07 01:17:01,009 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:17:01,010 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:17:58,890 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:17:59,335 - bot.commands - INFO - Synced commands globally
+2025-02-07 01:17:59,675 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 005adeba4cade8f5e431a486b77080a4).
+2025-02-07 01:18:02,362 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:18:20,763 - discord.app_commands.tree - ERROR - Ignoring exception in command tree
+Traceback (most recent call last):
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\app_commands\tree.py", line 1151, in wrapper
+    await self._call(interaction)
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\app_commands\tree.py", line 1283, in _call
+    command, options = self._get_app_command_options(data)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\techd\AppData\Roaming\Python\Python313\site-packages\discord\app_commands\tree.py", line 1187, in _get_app_command_options
+    raise CommandNotFound(name, parents)
+discord.app_commands.errors.CommandNotFound: Application command 'checkcommands' not found
+2025-02-07 01:18:59,745 - bot.commands - INFO - Cleared global commands
+2025-02-07 01:19:01,268 - bot.commands - INFO - Synced commands to dev guild 947925127654412370
+2025-02-07 01:19:36,975 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:22:12,825 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:22:16,184 - discord.client - INFO - logging in using static token
+2025-02-07 01:22:16,687 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:22:16,688 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:22:16,853 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:22:17,184 - bot.commands - INFO - Synced commands globally
+2025-02-07 01:22:18,094 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 921fcfd0b960e4627e98c6829ca9ad10).
+2025-02-07 01:22:20,281 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:23:43,590 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:24:19,155 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:24:22,231 - discord.client - INFO - logging in using static token
+2025-02-07 01:24:22,738 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:24:22,739 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:24:22,864 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:24:23,470 - bot.commands - INFO - Synced commands globally
+2025-02-07 01:24:23,941 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: ece72823d705d709854db7b42b8c6743).
+2025-02-07 01:24:26,141 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:26:09,823 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:27:29,707 - bot.connection - INFO - Web server shutdown complete
+2025-02-07 01:27:32,850 - discord.client - INFO - logging in using static token
+2025-02-07 01:27:33,421 - bot.connection - INFO - Starting web server on 0.0.0.0:8080
+2025-02-07 01:27:33,422 - bot.connection - INFO - Web server running at http://0.0.0.0:8080
+2025-02-07 01:27:33,630 - bot.commands - INFO - Cleared commands from guild 947925127654412370
+2025-02-07 01:27:34,064 - bot.commands - INFO - Synced commands globally
+2025-02-07 01:27:34,491 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 935aae06d6bf45736b3bd98a2f79179d).
+2025-02-07 01:27:36,682 - bot.heartbeat - WARNING - Heartbeat failed with status 530
+2025-02-07 01:28:08,191 - bot.connection - INFO - Web server shutdown complete

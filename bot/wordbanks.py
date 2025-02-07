@@ -208,31 +208,65 @@ BARK_VARIATIONS = [
 
 # Replace dynamic generation with static definitions
 MOOD_MESSAGES = {
-    'happy': [
-        '*tail wags happily* ',
+    'ecstatic': [
+        '*bounces uncontrollably with joy* ',
+        '*zooms around in pure happiness* ',
+        '*can barely contain the excitement* '
+    ],
+    'excited': [
+        '*tail wags wildly* ',
         '*bounces joyfully* ',
         '*spins excitedly* '
     ],
+    'happy': [
+        '*tail wags happily* ',
+        '*prances around* ',
+        '*smiles brightly* '
+    ],
     'playful': [
         '*prances playfully* ',
-        '*barks excitedly* ',
+        '*paws at toys* ',
         '*bounces energetically* '
     ],
-    'sleepy': [
-        '*moves drowsily* ',
-        '*whimpers softly* ',
-        '*yawns quietly* '
+    'content': [
+        '*relaxes peacefully* ',
+        '*wags tail gently* ',
+        '*sighs contentedly* '
     ],
-    # Add missing moods
+    'sleepy': [
+        '*yawns softly* ',
+        '*stretches lazily* ',
+        '*blinks slowly* '
+    ],
+    'bored': [
+        '*paws at ground listlessly* ',
+        '*sighs dramatically* ',
+        '*looks around for something to do* '
+    ],
     'hungry': [
         '*stares at food bowl* ',
-        '*licks lips hopefully* ',
-        '*paws at empty dish* '
+        '*paws at empty dish* ',
+        '*whines at treat jar* '
     ],
-    'excited': [
-        '*zooms around happily* ',
-        '*bounces with excitement* ',
-        '*tail wagging intensifies* '
+    'anxious': [
+        '*paces nervously* ',
+        '*whimpers softly* ',
+        '*tail tucked slightly* '
+    ],
+    'sad': [
+        '*droops ears* ',
+        '*lets out soft whine* ',
+        '*tail droops low* '
+    ],
+    'meh': [
+        '*shrugs slightly* ',
+        '*flicks ears noncommittally* ',
+        '*mild tail swish* '
+    ],
+    'neutral': [
+        '*blinks calmly* ',
+        '*sits quietly* ',
+        '*observes surroundings* '
     ]
 }
 
@@ -288,8 +322,95 @@ GAG_SOUNDS = [
     "*whines desperately against the gag* mmmnnnnph!",
 ]
 
+MOOD_GAG_SOUNDS = {
+    'ecstatic': [
+        "*excited muffled bouncing* mmph mmph mmph!",
+        "*gagged tail wagging intensifies* mrrrff~!",
+        "*can barely contain muffled excitement* mmmf! mmmf!",
+        "*happy gagged zoomies* mrrrf! mrrf! mrrf!"
+    ],
+    'excited': [
+        "*muffled happy bouncing* mmrph mmph!",
+        "*enthusiastic gagged noises* mff mff mff!",
+        "*energetic tail wagging with gagged whines* mrrrfff~",
+        "*playful gagged zoomies* mmph! mmph!"
+    ],
+    'happy': [
+        "*content muffled sounds* mmmmff~",
+        "*gagged tail wagging* mmrph mrph!",
+        "*happy muffled purrs* mmmrrr~",
+        "*cheerful gagged wiggles* mff mff!"
+    ],
+    'playful': [
+        "*playful muffled boops* mff mff!",
+        "*gagged play bow* mrrrff!",
+        "*bouncy gagged noises* mph mph mph!",
+        "*tries to giggle through gag* hmmhf! hmmphh!"
+    ],
+    'content': [
+        "*relaxed muffled sighs* mmmmf~",
+        "*gentle gagged humming* hmmm mmff~",
+        "*peaceful muffled sounds* mff~",
+        "*soft contented gag noises* mmrrr~"
+    ],
+    'sleepy': [
+        "*sleepy muffled yawns* mmmmfff~",
+        "*drowsy gagged mumbles* mmnnn...",
+        "*tired muffled stretching* mmrphh~",
+        "*lazy gagged sounds* mmmf..."
+    ],
+    'bored': [
+        "*bored muffled sighs* mmmfff...",
+        "*listless gagged sounds* meh mmph...",
+        "*unenthusiastic gag noises* mmrph...",
+        "*disinterested muffled huffs* hmph..."
+    ],
+    'hungry': [
+        "*hungry muffled whines* mmmmnnn!",
+        "*gagged food begging* mmph? mmph?",
+        "*stomach growls with muffled whimpers* mrrrff...",
+        "*impatient gagged food noises* mmf! mmf!"
+    ],
+    'anxious': [
+        "*nervous muffled pacing* mmph... mmph...",
+        "*worried gagged whimpers* mmnnn...",
+        "*anxious pawing at muzzle* mmmf?",
+        "*distressed muffled whines* nnnngh..."
+    ],
+    'sad': [
+        "*sad muffled whimpers* mmmnn...",
+        "*dejected gagged sighs* mmmmfff...",
+        "*sorrowful muffled sounds* mrrff...",
+        "*droopy gagged ears* mmph..."
+    ],
+    'meh': [
+        "*indifferent muffled sounds* mmph.",
+        "*noncommittal gagged noises* mff.",
+        "*mild gagged reaction* mm.",
+        "*barely interested muffled response* hm."
+    ],
+    'neutral': [
+        "*calm muffled breathing* mmf...",
+        "*steady gagged sounds* mmph.",
+        "*composed muffled noises* mff.",
+        "*neutral gagged response* mm."
+    ]
+}
 
-MOODS = ['happy', 'playful', 'sleepy', 'hungry', 'excited']
+MOODS = [
+    'ecstatic',
+    'excited', 
+    'happy',
+    'playful',
+    'content',
+    'neutral',
+    'sleepy',
+    'bored',
+    'meh',
+    'hungry',
+    'anxious',
+    'sad'
+]
 
 class VerbConjugator:
     def __init__(self):
@@ -303,33 +424,17 @@ class VerbConjugator:
             'try': 'tries',
             'watch': 'watches',
             'buzz': 'buzzes',
-            'fix': 'fixes'
+            'fix': 'fixes',
+            # Add this to prevent double conjugation
+            'is': 'is'  
         }
-
-        # Auxiliary verb patterns
-        self.auxiliary_verbs = {
-            'am': 'is',
-            'have': 'has',
-            'do': 'does',
-            'will': 'will',
-            'would': 'would',
-            'could': 'could',
-            'should': 'should',
-            'might': 'might',
-            'must': 'must'
-        }
-
-        # Common verb suffix rules
-        self.verb_suffix_rules = [
-            (r'([^aeiou])y$', r'\1ies'),    # try -> tries
-            (r'([sxz]|ch|sh)$', r'\1es'),   # watch -> watches
-            (r'[^s]$', r's')                # Default: add 's'
-        ]
-
-        # Compile regex patterns
-        self.verb_patterns = {
-            re.compile(pattern): repl 
-            for pattern, repl in self.verb_suffix_rules
+        
+        # Add handling for special cases
+        self.special_cases = {
+            'it is': 'it is',  # Prevent "it ises"
+            'it has': 'it has',
+            'it will': 'it will',
+            'it would': 'it would'
         }
 
     def conjugate_verb(self, verb: str, tense: str = 'present') -> str:
@@ -386,61 +491,58 @@ class VerbConjugator:
 
     def replace(self, text: str) -> str:
         """Replace verbs while maintaining subject-verb agreement"""
-        # Pattern to match subject-verb combinations
+        # First check for special cases
+        for case, replacement in self.special_cases.items():
+            if case in text.lower():
+                return text
+                
+        # Then handle regular verb phrases
         verb_phrase_pattern = re.compile(
             r'\b(it|its)\s+(\w+)\b', 
             re.IGNORECASE
         )
-
-        # Replace verb phrases
-        result = verb_phrase_pattern.sub(
+        
+        return verb_phrase_pattern.sub(
             self.replace_verb_phrase, 
             text
         )
-
-        return result
 
 # Update the pronoun replacer to use the new matcher
 class PronounReplacement:
     def __init__(self):
         self.conjugator = VerbConjugator()
-        # Enhanced pronoun patterns with word boundaries
         self.pronoun_patterns = {
+            # Handle contractions first - exact matches only
+            r'\bI\'m\b': "it is",
+            r'\bI\'ve\b': "it has", 
+            r'\bI\'ll\b': "it will",
+            r'\bI\'d\b': "it would",
+            # Then handle basic pronouns
             r'\bI\b': "it",
             r'\bme\b': "it",
             r'\bmy\b': "its",
             r'\bmine\b': "its",
-            r'\bmyself\b': "itself",
-            r'\bI\'m\b': "it's",
-            r'\bI\'ve\b': "it's",
-            r'\bI\'ll\b': "it'll",
-            r'\bI\'d\b': "it'd"
+            r'\bmyself\b': "itself"
         }
         
-        # Compile patterns
-        self.compiled_patterns = {
-            re.compile(pattern, re.IGNORECASE): replacement 
+        # Compile patterns and sort by length (longest first)
+        self.compiled_patterns = sorted([
+            (re.compile(pattern, re.IGNORECASE), replacement)
             for pattern, replacement in self.pronoun_patterns.items()
-        }
-        
-        # Common verb pattern following "I"
-        self.verb_pattern = re.compile(r'\bI\s+(\w+)\b', re.IGNORECASE)
+        ], key=lambda x: len(x[1]), reverse=True)
 
     def replace(self, text: str) -> str:
-        """Apply pronoun replacements with role awareness"""
         if not text:
             return text
 
-        # Apply role-aware replacements first
-        # Apply standard replacements
-        for pattern, replacement in self.compiled_patterns.items():
+        # Apply replacements in order (longest first)
+        for pattern, replacement in self.compiled_patterns:
             text = pattern.sub(replacement, text)
             
-        # Apply verb conjugation
-        text = self.conjugator.replace(text)
+        # Clean up any double spaces
+        text = ' '.join(text.split())
         
         return text
-        return result
 
 # Initialize the enhanced pronoun replacer
 pronoun_replacer = PronounReplacement()

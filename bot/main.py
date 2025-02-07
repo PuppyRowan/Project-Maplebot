@@ -69,7 +69,10 @@ from bot.wordbanks import (
     SWEAR_REPLACEMENTS,
     SwearFilter,
     pronoun_replacer,
+    MOOD_GAG_SOUNDS,
 )
+from bot.mood_analyzer import MoodAnalyzer
+from bot.user_settings import UserSettingsManager
 
 # Available moods from MOOD_MESSAGES 
 MOODS = list(MOOD_MESSAGES.keys())
@@ -324,6 +327,9 @@ class PuppyBot(commands.Bot):
         # Initialize status task attribute 
         self._status_task = None
         self._status_running = False
+
+        self.mood_analyzer = MoodAnalyzer()
+        self.user_settings = UserSettingsManager()
 
     async def sync_command_tree(self, guild_id: Optional[int] = None) -> None:
         """
@@ -807,16 +813,16 @@ def check_target_user_role():
         return True
     return commands.check(predicate)
 
-# Add this near the top of the file after the bot class definition but before command implementations:
 
 def create_hybrid_command(name: str, description: str):
     """Helper decorator to create hybrid commands that work as both slash and prefix commands"""
     def decorator(func):
-        # Create hybrid command
+        # Only register as hybrid command once
         @bot.hybrid_command(name=name, description=description)
         @wraps(func)  # Preserve function metadata
         async def wrapper(*args, **kwargs):
             return await func(*args, **kwargs)
+        # Return the wrapper directly
         return wrapper
     return decorator
 
@@ -906,14 +912,24 @@ async def check_puppy_time(ctx) -> None:
 async def show_help(ctx) -> None:
     """Show comprehensive help information about the bot"""
     
-    # Create main embed with updated description
     help_embed = discord.Embed(
         title="🐕 Puppy Bot User Guide",
         description="All commands work with both / and ! prefix\nExample: `/command` or `!command`",
         color=discord.Color.blue()
     )
 
-    # Settings Commands section with better formatting
+    # Puppy Management Commands section
+    puppy_management = """
+**Puppy Management** (Admin Only)
+• `addpuppy <user>` - Add a user as a puppy
+• `removepuppy <user>` - Remove a user's puppy status
+• `listpuppies` - Show all puppies in server
+• `setpuppy <user> <setting> <value>` - Change puppy settings
+• `puppysettings <user>` - View puppy's settings
+    """
+    help_embed.add_field(name="🎯 Puppy Management", value=puppy_management, inline=False)
+
+    # Settings Commands section
     settings_cmds = """
 **Probability Settings**
 • `set_bark <0-1>` - Set random bark chance
@@ -941,8 +957,11 @@ async def show_help(ctx) -> None:
     """
     help_embed.add_field(name="🔄 Toggle & Sound Commands", value=toggle_cmds, inline=False)
 
-    # Info Commands section
-    info_cmds = """
+    # Analysis Commands section
+    analysis_cmds = """
+• `analyze <text>` - Analyze text mood/tone
+↳ Shows detected mood and confidence
+
 • `puppytime` - Check current schedule activity
 ↳ Shows what puppy should be doing now
 
@@ -952,7 +971,7 @@ async def show_help(ctx) -> None:
 • `ping` - Check bot latency
 ↳ Shows connection status
     """
-    help_embed.add_field(name="ℹ️ Information Commands", value=info_cmds, inline=False)
+    help_embed.add_field(name="📊 Analysis Commands", value=analysis_cmds, inline=False)
 
     # Current Settings Section - only show if in a guild
     if ctx.guild:
@@ -964,19 +983,21 @@ async def show_help(ctx) -> None:
 • Features: {'Disabled' if settings.features_disabled else 'Enabled'}
 • Muzzle: {'Active' if settings.gag_active else 'Inactive'}
         """
-        help_embed.add_field(name="📊 Current Settings", value=current_settings, inline=False)
+        help_embed.add_field(name="📈 Server Settings", value=current_settings, inline=False)
 
-    # Add tips section
+    # Add tips section with more relevant information
     tips = """
 • Most commands require higher role than target user
+• Puppy management requires Administrator permission
 • Sound commands only work in voice channels
-• Settings are per-server
-• Use `!status` for detailed bot status
+• Settings are per-server and per-puppy
+• Use `/status` for detailed bot status
+• Use `/puppysettings` to view individual puppy settings
     """
-    help_embed.add_field(name="💡 Tips", value=tips, inline=False)
+    help_embed.add_field(name="💡 Tips & Notes", value=tips, inline=False)
 
     # Add footer with additional info
-    help_embed.set_footer(text="Note: Commands require appropriate permissions • Bot made with ❤️")
+    help_embed.set_footer(text="Bot Version 2.0 • Made with ❤️ • Use /commands for command list")
 
     await ctx.send(embed=help_embed)
 
@@ -1206,7 +1227,7 @@ async def on_message(message):
     message_logger.debug(f"Message received from {message.author.id}: {message.content}")
     
     # Don't respond to bot messages
-    if message.author.bot:
+    if (message.author.bot):
         return
 
     # Check if message is from our webhook
@@ -1215,30 +1236,34 @@ async def on_message(message):
         
     # Process commands
     await bot.process_commands(message)
-    
-    # Don't process message transformations for non-target users
-    if message.author.id not in TARGET_USER_IDS:
+
+    # Check if message author is a puppy
+    user_settings = bot.user_settings.get_settings(message.author.id)
+    if not user_settings:
+        await bot.process_commands(message)
         return
 
-    # Get guild settings
-    settings = bot.guild_settings.get_settings(message.guild.id)
+    # Get guild settings only for features_disabled check
+    guild_settings = bot.guild_settings.get_settings(message.guild.id)
     
-    try:
-        # Get attachments before deletion
-        files = await forward_attachments(message.channel, message)
+    # Analyze mood from message
+    if len(message.content) > 3:
+        new_mood, confidence = bot.mood_analyzer.analyze_mood(message.content)
         
-        # Try to delete original message
-        try:
-            await message.delete()
-        except discord.Forbidden:
-            logger.warning("Missing permissions to delete message")
-        except Exception as e:
-            logger.error(f"Error deleting message: {e}")
+        # Update user's mood if confidence is high enough
+        if confidence > 0.3:
+            user_settings.current_mood = new_mood
+            bot.user_settings.save_settings()
+            message_logger.debug(f"Updated mood to {new_mood} (confidence: {confidence:.2f})")
+
+    try:
+        files = await forward_attachments(message.channel, message)
+        await message.delete()
     except Exception as e:
         logger.error(f"Error handling message: {e}")
         return
 
-    # Process message content
+    # Process message content using user settings instead of guild settings
     lines = message.content.split('\n')
     modified_lines = []
 
@@ -1248,80 +1273,66 @@ async def on_message(message):
             continue
 
         current_line = line
-        
-        # Apply swear filter first
         filtered_line, was_filtered = swear_filter.filter_text(current_line)
-        message_logger.debug(f"After swear filter: {filtered_line} (filtered: {was_filtered})")
         
-        # If message was completely filtered, use a scold message
         if was_filtered and filtered_line in BOT_SCOLDS:
             modified_lines.append(filtered_line)
             continue
         
         current_line = filtered_line
 
-        # Only apply gag if features are enabled
-        if not settings.features_disabled and settings.gag_active:
-            current_line = random.choice(GAG_SOUNDS)
+        # Use user's gag setting instead of guild's
+        if not guild_settings.features_disabled and user_settings.gag_active:
+            if user_settings.current_mood in MOOD_GAG_SOUNDS:
+                current_line = random.choice(MOOD_GAG_SOUNDS[user_settings.current_mood])
+            else:
+                current_line = random.choice(MOOD_GAG_SOUNDS['neutral'])
             modified_lines.append(current_line)
             break
         else:
-            # Process word by word
             words = []
             for word in current_line.split():
                 if any(word.startswith(prefix) for prefix in ['<@', '<#', '<:', '<a:']):
                     words.append(word)
                 else:
-                    # Apply pronoun replacements
                     word = pronoun_replacer.replace(word)
                     
-                    # Apply UwU if enabled
-                    if not settings.features_disabled and random.random() < settings.uwu_chance:
+                    # Use user's UwU chance
+                    if not guild_settings.features_disabled and random.random() < user_settings.uwu_chance:
                         word = transform_to_uwu(word)
                         
                     words.append(word)
             
-            # Rejoin words and fix grammar
             current_line = ' '.join(words)
             current_line = fix_grammar(current_line)
             modified_lines.append(current_line)
 
-    # Rest of the message handling remains the same...
-
-    # Join lines with proper newline preservation
     modified_content = '\n'.join(modified_lines)
 
-    # Only apply additional features if not disabled and not gagged
-    if not settings.features_disabled and not settings.gag_active:
+    # Apply user-specific features
+    if not guild_settings.features_disabled and not user_settings.gag_active:
         prefix_lines = []
         
-        # Random bark chance
-        if random.random() < settings.bark_chance:
+        # Use user's bark chance
+        if random.random() < user_settings.bark_chance:
             bark = add_bark()
             prefix_lines.append(bark)
-            logger.debug(f"Added bark: {bark}")
         
-        # Add mood prefix
-        current_mood = settings.current_mood
-        if current_mood in MOOD_MESSAGES:
-            mood_prefix = random.choice(MOOD_MESSAGES[current_mood])
+        # Use user's mood
+        if user_settings.current_mood in MOOD_MESSAGES:
+            mood_prefix = random.choice(MOOD_MESSAGES[user_settings.current_mood])
             prefix_lines.append(mood_prefix.rstrip())
-            logger.debug(f"Added mood prefix: {mood_prefix}")
         
-        # Add puppy schedule activities
+        # Use user's puppy time chance
         current_activity = bot.get_current_puppy_time()
-        if current_activity and random.random() < settings.puppy_time_chance:
+        if current_activity and random.random() < user_settings.puppy_time_chance:
             activity_message = random.choice(PUPPY_MESSAGES[current_activity])
             prefix_lines.append(activity_message)
-            logger.debug(f"Added activity message: {activity_message}")
 
-        # Add prefixes with proper spacing
         if prefix_lines:
             modified_content = '\n'.join(prefix_lines + ['']) + modified_content
 
-    logger.debug(f"Final content: {modified_content}")
-
-    # Send modified message with attachments
+    # Send modified message
     try:
         webhook = await bot.get_webhook(message.channel)
         await webhook.send(
@@ -1336,20 +1347,15 @@ async def on_message(message):
                 replied_user=True
             )
         )
-        logger.debug("Successfully sent webhook message")
     except Exception as e:
         logger.error(f"Error sending webhook message: {e}")
-        # Fallback to regular message
         try:
             await message.channel.send(
                 f"**{message.author.display_name}:** {modified_content}",
                 files=files
             )
-            logger.debug("Sent fallback message")
         except Exception as e2:
             logger.error(f"Error sending fallback message: {e2}")
-    
-    await bot.process_commands(message)
 
 # Add slash commands
 @create_hybrid_command(name='bark', description='Make the puppy bark!')
@@ -1359,30 +1365,28 @@ async def bark(interaction: discord.Interaction) -> None:
 
 @create_hybrid_command(name='mood', description='Check or set puppy\'s current mood')
 @app_commands.describe(new_mood="Optional: Set a new mood (happy/playful/sleepy/etc)")
-async def mood(
-    interaction: discord.Interaction,
-    new_mood: Optional[str] = None
-) -> None:
+async def mood(ctx, new_mood: Optional[str] = None) -> None:
     """Check or change the puppy's mood"""
-    settings = bot.guild_settings.get_settings(interaction.guild_id)
+    # Get guild ID safely from either Context or Interaction
+    guild_id = ctx.guild.id if ctx.guild else None
+    if not guild_id:
+        await ctx.send("*whimpers* This command can only be used in a server!")
+        return
+
+    settings = bot.guild_settings.get_settings(guild_id)
     
     if new_mood:
         if new_mood.lower() not in MOODS:
-            await interaction.response.send_message(
-                f"*confused head tilt* Available moods are: {', '.join(MOODS)}"
-            )
+            available_moods = ', '.join(MOODS)
+            await ctx.send(f"*confused head tilt* Available moods are: {available_moods}")
             return
             
         settings.update_setting('current_mood', new_mood.lower())
         bot.guild_settings.save_settings()
-        await interaction.response.send_message(
-            f"*mood shifts* Now feeling {new_mood}!"
-        )
+        await ctx.send(f"*mood shifts* Now feeling {new_mood}!")
     else:
         current_mood = settings.current_mood
-        await interaction.response.send_message(
-            f"*tail wags* Currently feeling {current_mood}!"
-        )
+        await ctx.send(f"*tail wags* Currently feeling {current_mood}!")
 
 @create_hybrid_command(name='status', description='Show current bot status and settings')  
 async def status(interaction: discord.Interaction) -> None:
@@ -1492,6 +1496,26 @@ async def check_commands(ctx: commands.Context) -> None:
     if guild_commands:
         guild_cmd_list = "\n".join([f"• {cmd.name}" for cmd in guild_commands]) or "No guild commands"
         embed.add_field(name=f"Guild Commands ({ctx.guild.name})", value=guild_cmd_list, inline=False)
+    
+    await ctx.send(embed=embed)
+
+@create_hybrid_command(name='analyze', description='Analyze the mood of a message')
+@app_commands.describe(text="Text to analyze")
+async def analyze_mood(ctx, *, text: str) -> None:
+    """Analyze the mood/tone of text"""
+    mood, confidence = ctx.bot.mood_analyzer.analyze_mood(text)
+    
+    embed = discord.Embed(
+        title="🎭 Mood Analysis",
+        description=f"Text: {text}",
+        color=discord.Color.blue()
+    )
+    
+    embed.add_field(
+        name="Detected Mood",
+        value=f"{mood.title()} ({confidence*100:.1f}% confidence)",
+        inline=False
+    )
     
     await ctx.send(embed=embed)
 
@@ -1674,6 +1698,105 @@ async def click(ctx: commands.Context) -> None:
             await ctx.send("*confused head tilt* The puppy needs to be in a voice channel first!")
         else:
             await ctx.send("*sad whine* Something went wrong trying to use the clicker...")
+
+@create_hybrid_command(name='addpuppy', description='Add a user as a puppy')
+@commands.has_permissions(administrator=True)
+async def add_puppy(ctx, user: discord.Member):
+    """Add a user as a puppy"""
+    # Check if user is already a puppy
+    if ctx.bot.user_settings.get_settings(user.id):
+        await ctx.send(f"*tilts head* {user.display_name} is already a puppy!")
+        return
+
+    # Add new puppy
+    ctx.bot.user_settings.add_puppy(user.id)
+    await ctx.send(f"*happy tail wags* {user.display_name} is now a puppy! 🐕")
+
+@create_hybrid_command(name='removepuppy', description='Remove a user from being a puppy')
+@commands.has_permissions(administrator=True)
+async def remove_puppy(ctx, user: discord.Member):
+    """Remove a user from being a puppy"""
+    if ctx.bot.user_settings.remove_puppy(user.id):
+        await ctx.send(f"*sad whimpers* {user.display_name} is no longer a puppy...")
+    else:
+        await ctx.send(f"*confused head tilt* {user.display_name} wasn't a puppy to begin with!")
+
+@create_hybrid_command(name='listpuppies', description='List all puppies in the server')
+async def list_puppies(ctx):
+    """List all puppies and their moods"""
+    puppies = []
+    for user_id, settings in ctx.bot.user_settings.settings.items():
+        member = ctx.guild.get_member(int(user_id))
+        if member:
+            puppies.append(f"🐕 {member.display_name} - {settings.current_mood}")
+
+    if puppies:
+        embed = discord.Embed(
+            title="🐕 Puppy List",
+            description="\n".join(puppies),
+            color=discord.Color.blue()
+        )
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send("*sad whine* No puppies found!")
+
+@create_hybrid_command(name='setpuppy', description='Change settings for a puppy')
+@commands.has_permissions(administrator=True)
+async def set_puppy_setting(ctx, user: discord.Member, setting: str, value: str):
+    """Change settings for a specific puppy"""
+    user_settings = ctx.bot.user_settings.get_settings(user.id)
+    if not user_settings:
+        await ctx.send(f"*confused whine* {user.display_name} isn't a puppy!")
+        return
+
+    try:
+        if setting in ['bark_chance', 'uwu_chance', 'puppy_time_chance']:
+            value = float(value)
+            if not 0 <= value <= 1:
+                await ctx.send("*tilts head* Chance must be between 0 and 1!")
+                return
+        elif setting in ['gag_active', 'features_disabled']:
+            value = value.lower() == 'true'
+        elif setting == 'current_mood':
+            if value.lower() not in MOODS:
+                await ctx.send(f"*confused* Available moods are: {', '.join(MOODS)}")
+                return
+            value = value.lower()
+        else:
+            await ctx.send(f"*confused whimper* Unknown setting: {setting}")
+            return
+
+        setattr(user_settings, setting, value)
+        ctx.bot.user_settings.save_settings()
+        await ctx.send(f"*happy tail wags* Updated {user.display_name}'s {setting} to {value}!")
+
+    except ValueError:
+        await ctx.send("*tilts head* That doesn't look like a valid value...")
+
+@create_hybrid_command(name='puppysettings', description='Show settings for a puppy')
+async def show_puppy_settings(ctx, user: discord.Member):
+    """Show current settings for a puppy"""
+    user_settings = ctx.bot.user_settings.get_settings(user.id)
+    if not user_settings:
+        await ctx.send(f"*confused whine* {user.display_name} isn't a puppy!")
+        return
+
+    embed = discord.Embed(
+        title=f"🐕 {user.display_name}'s Settings",
+        color=discord.Color.blue()
+    )
+
+    settings_text = f"""
+    Mood: {user_settings.current_mood}
+    Bark Chance: {user_settings.bark_chance*100:.1f}%
+    UwU Chance: {user_settings.uwu_chance*100:.1f}%
+    Puppy Time Chance: {user_settings.puppy_time_chance*100:.1f}%
+    Muzzled: {'Yes' if user_settings.gag_active else 'No'}
+    Features: {'Disabled' if user_settings.features_disabled else 'Enabled'}
+    """
+    embed.description = settings_text
+
+    await ctx.send(embed=embed)
 
 if __name__ == "__main__":
     # Configure logging
