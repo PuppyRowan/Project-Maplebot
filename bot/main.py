@@ -73,6 +73,7 @@ from bot.wordbanks import (
 )
 from bot.mood_analyzer import MoodAnalyzer
 from bot.user_settings import UserSettingsManager
+from mimetypes import guess_type
 
 # Available moods from MOOD_MESSAGES 
 MOODS = list(MOOD_MESSAGES.keys())
@@ -1102,20 +1103,53 @@ async def forward_attachments(
     webhook: discord.Webhook, 
     message: discord.Message
 ) -> List[discord.File]:
-    """Forward message attachments via webhook"""
+    """
+    Forward message attachments via webhook with enhanced video support
+    Returns list of prepared discord.File objects
+    """
     files = []
     for attachment in message.attachments:
         try:
-            # Download and prepare attachment
+            # Get content type
+            content_type = attachment.content_type or guess_type(attachment.filename)[0]
+            
+            # Check if it's a video file
+            is_video = (
+                content_type and (
+                    content_type.startswith('video/') or 
+                    attachment.filename.lower().endswith(
+                        ('.mp4', '.mov', '.webm', '.avi', '.mkv', '.flv')
+                    )
+                )
+            )
+
+            # For videos, check size limit (Discord limit is 100MB for most servers)
+            if is_video and attachment.size > 100 * 1024 * 1024:  # 100MB in bytes
+                logger.warning(f"Video too large: {attachment.filename} ({attachment.size} bytes)")
+                continue
+
+            # Download attachment with progress tracking for large files
+            if attachment.size > 8 * 1024 * 1024:  # 8MB threshold
+                logger.info(f"Downloading large file: {attachment.filename}")
+                
             file_bytes = await attachment.read()
+            
+            # Create discord.File with content type if available
             file = discord.File(
                 fp=io.BytesIO(file_bytes),
                 filename=attachment.filename,
-                description=attachment.description
+                description=attachment.description,
+                spoiler=attachment.is_spoiler()
             )
+            
             files.append(file)
+            logger.debug(f"Processed attachment: {attachment.filename} ({content_type})")
+            
+        except discord.HTTPException as e:
+            logger.error(f"Discord error processing attachment {attachment.filename}: {e}")
         except Exception as e:
-            print(f"Error processing attachment {attachment.filename}: {e}")
+            logger.error(f"Error processing attachment {attachment.filename}: {e}")
+            
     return files
 
 async def notify_devs(
@@ -1220,6 +1254,34 @@ logger = logging.getLogger('bot.message_handler')
 from bot.wordbanks import SWEAR_REPLACEMENTS
 swear_filter = SwearFilter(SWEAR_REPLACEMENTS)
 
+# Add this helper function after other helper functions
+async def format_reply_reference(message: discord.Message) -> str:
+    """Format reply reference as a block quote"""
+    if not message.reference:
+        return ""
+        
+    try:
+        # Get the message being replied to
+        replied_msg = await message.channel.fetch_message(message.reference.message_id)
+        
+        if not replied_msg:
+            return ""
+            
+        # Get the content and sanitize it
+        content = replied_msg.content.strip()
+        if not content:
+            return ""
+            
+        # Format as block quote, handling multiple lines
+        quoted_lines = [f"> {line}" for line in content.split('\n')]
+        return '\n'.join(quoted_lines) + '\n\n'  # Add extra newline after quote
+        
+    except discord.NotFound:
+        return ""  # Message was deleted
+    except Exception as e:
+        logger.error(f"Error formatting reply: {e}")
+        return ""
+
 @bot.event
 @log_errors 
 async def on_message(message):
@@ -1266,6 +1328,12 @@ async def on_message(message):
     # Process message content using user settings instead of guild settings
     lines = message.content.split('\n')
     modified_lines = []
+
+    # Add reply quote if message is a reply
+    if message.reference:
+        quote = await format_reply_reference(message)
+        if quote:
+            modified_lines.append(quote)
 
     for line in lines:
         if not line.strip():
@@ -1335,6 +1403,19 @@ async def on_message(message):
     # Send modified message
     try:
         webhook = await bot.get_webhook(message.channel)
+        
+        # Process attachments first
+        files = await forward_attachments(webhook, message)
+        
+        # Delete original message before sending webhook message
+        try:
+            await message.delete()
+        except discord.NotFound:
+            pass  # Message was already deleted
+        except discord.Forbidden:
+            logger.warning("Cannot delete original message - missing permissions")
+        
+        # Send webhook message with files
         await webhook.send(
             content=modified_content,
             username=message.author.display_name,
@@ -1345,10 +1426,15 @@ async def on_message(message):
                 users=True,
                 roles=True,
                 replied_user=True
-            )
+            ),
+            reference=message.reference
         )
-    except Exception as e:
-        logger.error(f"Error sending webhook message: {e}")
+        
+        logger.debug(f"Sent webhook message with {len(files)} attachments")
+        
+    except discord.HTTPException as e:
+        logger.error(f"Discord error sending webhook message: {e}")
+        # Fallback to regular message
         try:
             await message.channel.send(
                 f"**{message.author.display_name}:** {modified_content}",
